@@ -16,3 +16,13 @@ vue create supermall
 npm install vue-router --save
 ```
 
+
+
+
+
+- github taken
+
+```
+3da771c6418a6277f08509a8a7c76108e390949e
+```
+
