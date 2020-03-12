@@ -16,7 +16,11 @@ vue create supermall
 npm install vue-router --save
 ```
 
+- 添加axios网络模块
 
+```
+npm install 
+```
 
 
 
