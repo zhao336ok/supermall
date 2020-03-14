@@ -19,7 +19,13 @@ npm install vue-router --save
 - 添加axios网络模块
 
 ```
-npm install 
+npm install axios --save
+```
+
+- 安装better-scroll
+
+```
+npm install better-scroll --save
 ```
 
 
@@ -27,6 +33,6 @@ npm install
 - github taken
 
 ```
-3da771c6418a6277f08509a8a7c76108e390949e
+84519a13ac79390d9717a9037659d1f66db2fd60
 ```
 
