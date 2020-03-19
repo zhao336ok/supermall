@@ -5,6 +5,7 @@ const Home = () => import('views/home/Home')
 const Cate = () => import('views/cate/Cate')
 const Cart = () => import('views/cart/Cart')
 const ProFile = () => import('views/profile/ProFile')
+const Detail = ()=> import('views/detail/Detail')
 
 //安装插件
 Vue.use(VueRouter)
@@ -29,6 +30,10 @@ const routes =[
   {
     path: '/profile',
     component: ProFile
+  },
+  {
+    path: '/detail/:iid',
+    component: Detail
   }
 ]
 
