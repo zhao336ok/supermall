@@ -13,7 +13,7 @@
       <tab-control :titles="['流行', '新款', '精选']" @tabClick="tabClick" ref="tabControl2"></tab-control>
       <goods-list :goods="goodsShow"></goods-list>
     </scroll>
-    <back-top @click.native="backClick" v-show="isBackTopShow"></back-top>
+    <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 
@@ -30,6 +30,8 @@
 
   import {getMultiData, getHomeGoods} from "network/home";
   import {debounce} from "common/utils";
+  import {itemListenerMixin, backTopMixin} from "common/mixin";
+  import {NEW, POP, SELL} from "common/const";
 
   export default {
     name: "Home",
@@ -43,6 +45,7 @@
       RecommendView,
       FeatureView
     },
+    mixins:[itemListenerMixin, backTopMixin],
     data(){
       return {
         banners:[],
@@ -52,7 +55,7 @@
           'new':{page: 0, list: []},
           'sell':{page: 0, list: []},
         },
-        goodsType: 'pop',
+        goodsType: POP,
         isBackTopShow: false,
         tabOffsetTop: 0,
         isTabFixed: false,
@@ -71,7 +74,8 @@
       this.$refs.scroll.refresh()
     },
     deactivated() {
-      this.saveY = this.$refs.scroll.getScrollY()
+      this.saveY = this.$refs.scroll.getScrollY();
+      this.$bus.$off('itemImgLoad', this.itemImgListener)
     },
     created() {
 
@@ -79,9 +83,9 @@
       this.getMultiData();
 
       //请求商品数据
-      this.getHomeGoods('pop');
-      this.getHomeGoods('new');
-      this.getHomeGoods('sell');
+      this.getHomeGoods(POP);
+      this.getHomeGoods(NEW);
+      this.getHomeGoods(SELL);
 
     },
     methods:{
@@ -107,10 +111,8 @@
         this.$refs.scroll.scrollTo(0, 0, 500)
       },
       contentScroll(position){
-        // console.log(position.y);
-        this.isBackTopShow = (-position.y) > 1000
-
-        this.isTabFixed = (-position.y) > this.tabOffsetTop
+        this.listenShowBackTop(position);//返回顶部
+        this.isTabFixed = (-position.y) > this.tabOffsetTop;
       },
       loadMore(){
         this.getHomeGoods(this.goodsType)

@@ -27,7 +27,8 @@
     },
     methods:{
       titleClick(index){
-        this.selIndex = index
+        this.selIndex = index;
+        this.$emit('titleClick', index);
       },
       backClick(){
         this.$router.back()
