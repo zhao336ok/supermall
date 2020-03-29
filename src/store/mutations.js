@@ -9,6 +9,7 @@ export default {
   payload.count++;
 },
 [ADD_TO_CAR](state, payload){
+  payload.checked = true;
   state.cartList.push(payload);
 }
 }

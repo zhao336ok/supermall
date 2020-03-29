@@ -1,9 +1,9 @@
 import axios from 'axios'
 export function request(config){
   const intance = axios.create({
-    baseURL:'xxx',
+    baseURL:'',
     timeout:5000
-  })
+  });
 
   //1.请求拦截的作用
   intance.interceptors.request.use(config=>{

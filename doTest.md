@@ -28,11 +28,27 @@ npm install axios --save
 npm install better-scroll --save
 ```
 
-
-
-- github taken
+- 懒加载
 
 ```
-84519a13ac79390d9717a9037659d1f66db2fd60
+npm install vue-lazyload --save
+```
+
+- 解决移动端延迟300ms问题
+
+```
+npm install fastclick --save
+```
+
+- 安装vuex
+
+```
+npm install vuex --save
+```
+
+- px转换为viewpoart
+
+```
+npm install postcss-px-to-viewport --save-dev
 ```
 
