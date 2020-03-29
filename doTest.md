@@ -52,3 +52,17 @@ npm install vuex --save
 npm install postcss-px-to-viewport --save-dev
 ```
 
+## vue项目线上页面刷新报404 解决方法
+
+- 修改nginx配置文件
+
+```
+location / {
+root ...
+index ...
+try_files $uri $uri/ /index.html; ---解决页面刷新404问题
+}
+```
+
+
+
